@@ -1,7 +1,7 @@
 import copy
 import pickle
 
-import torch, esm, random, os, json
+import torch, random, os, json
 import numpy as np
 from Bio import SeqIO
 
