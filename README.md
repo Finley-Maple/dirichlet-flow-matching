@@ -25,6 +25,19 @@ We provide the weights of trained models for all experiments (if required). Unzi
 https://publbuck.s3.us-east-2.amazonaws.com/workdir.zip
 ```
 
+## Log in wandb
+To record the training process and log, we used wandb to track the experiments. Please create an account on wandb and login using the command below.
+
+```
+wandb login
+```
+
+## Dataset
+
+We used the following datasets for the experiments:
+Cityscapes gtFine_trainvaltest.zip (https://www.cityscapes-dataset.com/)
+
+
 ## Toy experiments
 The commands below are for linear flow matching (mode riemannian) and dirichlet flow matching. K in the paper corresponds to `--toy_simplex_dim` here.
 ```yaml
