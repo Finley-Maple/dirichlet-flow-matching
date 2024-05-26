@@ -3,6 +3,7 @@
 ### [Paper on arXiv](http://arxiv.org/abs/2402.05841)
 
 ### Conda environment
+
 ```yaml
 conda create -c conda-forge -n seq python=3.9
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu113
@@ -20,12 +21,15 @@ pip install pyBigWig pytabix cooler pyranges biopython cooltools wandb pytorch_l
 ```
 
 # Experiments
+
 We provide the weights of trained models for all experiments (if required). Unzip them into in `workdir`.
+
 ```
 https://publbuck.s3.us-east-2.amazonaws.com/workdir.zip
 ```
 
 ## Log in wandb
+
 To record the training process and log, we used wandb to track the experiments. Please create an account on wandb and login using the command below.
 
 ```
@@ -35,11 +39,18 @@ wandb login
 ## Dataset
 
 We used the following datasets for the experiments:
-Cityscapes gtFine_trainvaltest.zip (https://www.cityscapes-dataset.com/)
+Cityscapes `leftImg8bit_trainvaltest.zip` and `gtFine_trainvaltest.zip` for the segmentation task. (<https://www.cityscapes-dataset.com/>)
 
+After downloading the dataset, please extract the files and place them in the `data` directory. Then use `scale_cityscapes.py` to scale the images and create the segmentation masks.
+
+```
+python scale_cityscapes.py
+```
 
 ## Toy experiments
+
 The commands below are for linear flow matching (mode riemannian) and dirichlet flow matching. K in the paper corresponds to `--toy_simplex_dim` here.
+
 ```yaml
 python -m train_dna --run_name trainToy_linear_dim40 --dataset_type toy_sampled --limit_val_batches 1000 --toy_seq_len 4 --toy_simplex_dim 40 --toy_num_cls 1 --val_check_interval 5000 --batch_size 512 --print_freq 100 --wandb --model cnn --mode riemannian
 
@@ -49,7 +60,7 @@ python -m train_dna --run_name trainToy_diri_dim40 --dataset_type toy_sampled --
 
 ## Promoter design experiments (Table 1)
 
-Download the dataset from https://zenodo.org/records/7943307 and place it in `data`.
+Download the dataset from <https://zenodo.org/records/7943307> and place it in `data`.
 
 Example command for retraining:
 
@@ -70,11 +81,9 @@ python -m train_promo --run_name language_model --batch_size 128 --wandb --num_w
 python -m train_promo --run_name linear_flow_matching --batch_size 128 --wandb --num_workers 4 --check_val_every_n_epoch 5 --num_integration_steps 100 --mode riemannian --validate --validate_on_test --ckpt workdir/promo_riem_sani_2024-01-31_10-55-43/epoch=124-step=43250-Copy1.ckpt
 ```
 
-
 ## Enhancer design Experiments
 
-Download the dataset from https://zenodo.org/records/10184648 and place it into `data` to have the path `data/the_code/...`
-
+Download the dataset from <https://zenodo.org/records/10184648> and place it into `data` to have the path `data/the_code/...`
 
 The following is an example command for training to then carry out the classifier free guidance experiments:
 
