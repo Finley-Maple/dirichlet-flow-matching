@@ -17,7 +17,7 @@ git checkout custom_target_support
 python setup.py build_ext --inplace
 python setup.py install
 
-pip install pyBigWig pytabix cooler pyranges biopython cooltools wandb pytorch_lightning
+pip install pyBigWig pytabix cooler pyranges biopython cooltools wandb pytorch_lightning Bio
 ```
 
 # Experiments
@@ -32,7 +32,7 @@ https://publbuck.s3.us-east-2.amazonaws.com/workdir.zip
 
 To record the training process and log, we used wandb to track the experiments. Please create an account on wandb and login using the command below.
 
-```
+```yaml
 wandb login
 ```
 
@@ -43,7 +43,7 @@ Cityscapes `leftImg8bit_trainvaltest.zip` and `gtFine_trainvaltest.zip` for the 
 
 After downloading the dataset, please extract the files and place them in the `data` directory. Then use `scale_cityscapes.py` to scale the images and create the segmentation masks.
 
-```
+```yaml
 python scale_cityscapes.py
 ```
 
