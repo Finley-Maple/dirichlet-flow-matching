@@ -12,7 +12,8 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 if args.wandb:
     wandb.init(
         # entity="anonymized",
-        settings=wandb.Settings(start_method="fork"),
+        # settings=wandb.Settings(start_method="fork"),
+        settings=wandb.Settings(start_method="thread"),
         # project="betawolf",
         project="",
         name=args.run_name,
