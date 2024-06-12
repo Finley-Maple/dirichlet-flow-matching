@@ -112,8 +112,8 @@ class DNAModule(GeneralModule):
 
             self.lg('seq', [''.join([['A','C','G','T'][num] if self.model.alphabet_size == 4 else str(num) for num in seq]) for seq in seq_pred])
             self.lg('recovery', seq_pred.eq(seq).float().mean(-1))
-            if self.args.dataset_type == 'toy_fixed':
-                self.log_data_similarities(seq_pred)
+            # if self.args.dataset_type == 'toy_fixed':
+            #     self.log_data_similarities(seq_pred)
 
             self.val_outputs['seqs'].append(seq_pred.cpu())
             if self.args.cls_ckpt is not None:

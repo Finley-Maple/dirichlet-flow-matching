@@ -1,3 +1,8 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+# This source code is licensed under the MIT license found in the "https://github.com/HannesStark/dirichlet-flow-matching"
+
+
 import copy
 import math
 import pickle

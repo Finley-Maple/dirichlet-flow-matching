@@ -44,8 +44,10 @@ Cityscapes `leftImg8bit_trainvaltest.zip` and `gtFine_trainvaltest.zip` for the 
 After downloading the dataset, please extract the files and place them in the `data` directory. Then use `scale_cityscapes.py` to scale the images and create the segmentation masks.
 
 ```yaml
-python scale_cityscapes.py
+python scale_cityscapes.py [-h] --root_path ROOT_PATH --scale SCALE --split SPLIT
 ```
+
+**Note**: The `root_path` should be the directory where the Cityscapes dataset is placed, e.g., 'data/cityscapes'. The `scale` should be the desired downsampling factor for the images. The `split` should be either `train`, `val`, or `test` depending on which split of the dataset is being used.
 
 ## Toy experiments
 
