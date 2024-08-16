@@ -17,7 +17,9 @@ from utils.sei import Sei
 
 logger = get_logger(__name__)
 
-
+# PromoterModule is a subclass of GeneralModule
+# It focuses on modeling promoter regions in DNA sequences
+# SEI: Sequence-to-Expression Inference: https://www.nature.com/articles/s41588-022-01102-2
 class PromoterModule(GeneralModule):
     def __init__(self, args):
         super().__init__(args)

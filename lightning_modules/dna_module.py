@@ -67,6 +67,7 @@ class DNAModule(GeneralModule):
         seq, cls = batch
         B, L = seq.shape
 
+        # Generate a path of conditional probabilities for the sequence
         xt, alphas = sample_cond_prob_path(self.args, seq, self.model.alphabet_size)
         if self.args.mode == 'distill':
             if self.stage == 'val':
@@ -80,6 +81,7 @@ class DNAModule(GeneralModule):
             xt_inp, prior_weights = expand_simplex(xt,alphas, self.args.prior_pseudocount)
             self.lg('prior_weight', prior_weights)
 
+        # whether to use the cls model to guide the flow
         if self.args.cls_free_guidance:
             if self.args.binary_guidance:
                 cls_inp = cls.clone()
